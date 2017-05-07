@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		BBEAE900CA821618B33070F4 /* Pods_WeatherForecast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E211C01A6E3A255B5DA54135 /* Pods_WeatherForecast.framework */; };
 		DFADD02E1EBF5BD400F5E3EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFADD02D1EBF5BD400F5E3EE /* AppDelegate.swift */; };
-		DFADD0301EBF5BD400F5E3EE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFADD02F1EBF5BD400F5E3EE /* ViewController.swift */; };
+		DFADD0301EBF5BD400F5E3EE /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFADD02F1EBF5BD400F5E3EE /* MainViewController.swift */; };
 		DFADD0331EBF5BD400F5E3EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFADD0311EBF5BD400F5E3EE /* Main.storyboard */; };
 		DFADD0351EBF5BD400F5E3EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFADD0341EBF5BD400F5E3EE /* Assets.xcassets */; };
 		DFADD0381EBF5BD400F5E3EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFADD0361EBF5BD400F5E3EE /* LaunchScreen.storyboard */; };
@@ -19,7 +19,7 @@
 		5A49737A73E1A1FEFF701E75 /* Pods-WeatherForecast.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherForecast.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherForecast/Pods-WeatherForecast.release.xcconfig"; sourceTree = "<group>"; };
 		DFADD02A1EBF5BD400F5E3EE /* WeatherForecast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherForecast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFADD02D1EBF5BD400F5E3EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DFADD02F1EBF5BD400F5E3EE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DFADD02F1EBF5BD400F5E3EE /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		DFADD0321EBF5BD400F5E3EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DFADD0341EBF5BD400F5E3EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DFADD0371EBF5BD400F5E3EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -79,7 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				DFADD02D1EBF5BD400F5E3EE /* AppDelegate.swift */,
-				DFADD02F1EBF5BD400F5E3EE /* ViewController.swift */,
+				DFADD02F1EBF5BD400F5E3EE /* MainViewController.swift */,
 				DFADD0311EBF5BD400F5E3EE /* Main.storyboard */,
 				DFADD0341EBF5BD400F5E3EE /* Assets.xcassets */,
 				DFADD0361EBF5BD400F5E3EE /* LaunchScreen.storyboard */,
@@ -212,7 +212,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DFADD0301EBF5BD400F5E3EE /* ViewController.swift in Sources */,
+				DFADD0301EBF5BD400F5E3EE /* MainViewController.swift in Sources */,
 				DFADD02E1EBF5BD400F5E3EE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -377,6 +377,7 @@
 				DFADD03E1EBF5BD400F5E3EE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
