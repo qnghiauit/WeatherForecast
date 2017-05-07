@@ -13,6 +13,7 @@
 		DFADD0331EBF5BD400F5E3EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFADD0311EBF5BD400F5E3EE /* Main.storyboard */; };
 		DFADD0351EBF5BD400F5E3EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFADD0341EBF5BD400F5E3EE /* Assets.xcassets */; };
 		DFADD0381EBF5BD400F5E3EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFADD0361EBF5BD400F5E3EE /* LaunchScreen.storyboard */; };
+		DFADD0401EBF839100F5E3EE /* CurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFADD03F1EBF839100F5E3EE /* CurrentWeather.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		DFADD0341EBF5BD400F5E3EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DFADD0371EBF5BD400F5E3EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DFADD0391EBF5BD400F5E3EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DFADD03F1EBF839100F5E3EE /* CurrentWeather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentWeather.swift; sourceTree = "<group>"; };
 		E211C01A6E3A255B5DA54135 /* Pods_WeatherForecast.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherForecast.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E45BDE73A554EF85F1886B7D /* Pods-WeatherForecast.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherForecast.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherForecast/Pods-WeatherForecast.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -84,6 +86,7 @@
 				DFADD0341EBF5BD400F5E3EE /* Assets.xcassets */,
 				DFADD0361EBF5BD400F5E3EE /* LaunchScreen.storyboard */,
 				DFADD0391EBF5BD400F5E3EE /* Info.plist */,
+				DFADD03F1EBF839100F5E3EE /* CurrentWeather.swift */,
 			);
 			path = WeatherForecast;
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DFADD0301EBF5BD400F5E3EE /* MainViewController.swift in Sources */,
+				DFADD0401EBF839100F5E3EE /* CurrentWeather.swift in Sources */,
 				DFADD02E1EBF5BD400F5E3EE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

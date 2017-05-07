@@ -17,6 +17,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var lbCurrentWeather: UILabel!
     @IBOutlet weak var tbWeatherNextTenDay: UITableView!
     
+    var lat = 10.880999
+    var long = 106.8102569
+    var weatherUrl = "http://samples.openweathermap.org/data/2.5/weather?lat=LAT&lon=LON&appid=4efa6d7498432f279f0f6b43d8bcd8c7"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tbWeatherNextTenDay.delegate = self
