@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -17,14 +18,48 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var lbCurrentWeather: UILabel!
     @IBOutlet weak var tbWeatherNextTenDay: UITableView!
     
-    var lat = 10.880999
-    var long = 106.8102569
-    var weatherUrl = "http://samples.openweathermap.org/data/2.5/weather?lat=LAT&lon=LON&appid=4efa6d7498432f279f0f6b43d8bcd8c7"
+    var lat: Double!
+    var long: Double!
+    var currentWeather : CurrentWeather!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        currentWeather = CurrentWeather()
+        lat = 35
+        long = 139
+        downloadWeatherData()
+        
         tbWeatherNextTenDay.delegate = self
         tbWeatherNextTenDay.dataSource = self
+    }
+    
+    func downloadWeatherData() {
+        let weatherUrl = "http://samples.openweathermap.org/data/2.5/weather?lat=\(lat!)&lon=\(long!)&appid=4efa6d7498432f279f0f6b43d8bcd8c7"
+        let currentWeatherUrl = URL(string: weatherUrl)!
+        print(currentWeatherUrl)
+        Alamofire.request(currentWeatherUrl).responseJSON { respone in
+            let result = respone.result
+            if let myDict = result.value as? Dictionary<String,AnyObject> {
+                if let cityname = myDict["name"] as? String {
+                    self.currentWeather._cityName = cityname.capitalized
+                }
+                if let weathertype = myDict["weather"] as? [Dictionary<String,AnyObject>] {
+                    if let type = weathertype[0]["main"] as? String {
+                        self.currentWeather._weatherType = type
+                    }
+                }
+                if let main = myDict["main"] as? Dictionary<String,AnyObject> {
+                    if let temp = main["temp"] as? Double {
+                        self.currentWeather._temp = round(temp - 273.15)
+                    }
+                }
+            }
+            self.lbDate.text = self.currentWeather.dateConverted
+            self.lbLocation.text = self.currentWeather._cityName
+            self.lbTemperature.text = "\(self.currentWeather.tempFormated)"
+            self.lbDate.text = self.currentWeather._date
+            self.imgWeather.image = UIImage(named: self.currentWeather._weatherType)
+    }
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {

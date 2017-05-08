@@ -15,13 +15,7 @@ class CurrentWeather {
     var _weatherType : String!
     var _temp : Double!
     
-    var cityName : String {
-        if _cityName == nil {
-            _cityName = ""
-        }
-        return _cityName
-    }
-    var date : String {
+    var dateConverted : String {
         if _date == nil {
             _date = ""
         }
@@ -29,21 +23,15 @@ class CurrentWeather {
         dateFormatter.dateStyle = .long
         dateFormatter.timeStyle = .none
         let currentDate = dateFormatter.string(from: Date())
-        self._date = "Today, \(currentDate)"
+        _date = "Today, \(currentDate)"
         return _date
     }
-    var weatherType : String {
-        if _weatherType == nil {
-            _weatherType = ""
-        }
-        return _weatherType
-    }
-    var temp : Double {
+    
+    var tempFormated : String {
         if _temp == nil {
             _temp = 0.0
         }
-        return _temp
+        return "\(Int(_temp))°C"
     }
-    
-    
+
 }

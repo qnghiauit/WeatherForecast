@@ -82,11 +82,11 @@
 			children = (
 				DFADD02D1EBF5BD400F5E3EE /* AppDelegate.swift */,
 				DFADD02F1EBF5BD400F5E3EE /* MainViewController.swift */,
+				DFADD03F1EBF839100F5E3EE /* CurrentWeather.swift */,
 				DFADD0311EBF5BD400F5E3EE /* Main.storyboard */,
 				DFADD0341EBF5BD400F5E3EE /* Assets.xcassets */,
 				DFADD0361EBF5BD400F5E3EE /* LaunchScreen.storyboard */,
 				DFADD0391EBF5BD400F5E3EE /* Info.plist */,
-				DFADD03F1EBF839100F5E3EE /* CurrentWeather.swift */,
 			);
 			path = WeatherForecast;
 			sourceTree = "<group>";
