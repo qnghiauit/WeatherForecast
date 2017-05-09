@@ -76,7 +76,7 @@
                                 <rect key="frame" x="0.0" y="300" width="375" height="367"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="WeatherCell" rowHeight="80" id="9Nf-9P-seH">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="WeatherCell" rowHeight="80" id="9Nf-9P-seH" customClass="ForecastTableViewCell" customModule="WeatherForecast" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9Nf-9P-seH" id="eXM-za-Cmd">
@@ -130,6 +130,13 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <connections>
+                                            <outlet property="imgIcon" destination="hQq-yK-B6i" id="2hJ-N2-fvZ"/>
+                                            <outlet property="lbDay" destination="aZA-uP-AGy" id="c7e-dQ-PTT"/>
+                                            <outlet property="lbHighTemp" destination="kSj-wA-qZJ" id="3BI-no-WBK"/>
+                                            <outlet property="lbLowTemp" destination="7dH-Bs-hTd" id="rfJ-fz-y4N"/>
+                                            <outlet property="lbWeatherType" destination="6Fj-dj-6zz" id="scY-TE-GcO"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -156,7 +163,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-12" y="57"/>
+            <point key="canvasLocation" x="442" y="12"/>
         </scene>
     </scenes>
 </document>

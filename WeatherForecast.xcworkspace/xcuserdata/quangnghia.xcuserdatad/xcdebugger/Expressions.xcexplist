@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "MainViewController.(downloadForecastData() -&gt; ()).(closure #1):MainViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MainViewController.tableView(UITableView, numberOfRowsInSection : Int) -&gt; Int:MainViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "forecasts.count">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MainViewController.(downloadWeatherData() -&gt; ()).(closure #1):MainViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.currentWeather">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MainViewController.downloadForecastData() -&gt; ():MainViewController.swift">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

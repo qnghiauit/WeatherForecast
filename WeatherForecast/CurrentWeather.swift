@@ -16,9 +16,6 @@ class CurrentWeather {
     var _temp : Double!
     
     var dateConverted : String {
-        if _date == nil {
-            _date = ""
-        }
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .long
         dateFormatter.timeStyle = .none
@@ -29,7 +26,7 @@ class CurrentWeather {
     
     var tempFormated : String {
         if _temp == nil {
-            _temp = 0.0
+            return "NaN"
         }
         return "\(Int(_temp))°C"
     }
