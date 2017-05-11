@@ -14,6 +14,7 @@ class Forecast {
     var weatherType : String!
     var highTemp : Double!
     var lowTemp : Double!
+    var summary : String!
     
     var highTempFormatted : String {
         if highTemp == nil {

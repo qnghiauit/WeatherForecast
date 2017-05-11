@@ -23,7 +23,7 @@ class ForecastTableViewCell: UITableViewCell {
     func setData(forecast: Forecast) {
         imgIcon.image = UIImage(named: forecast.weatherType)
         lbDay.text = forecast.date
-        lbWeatherType.text = forecast.weatherType
+        lbWeatherType.text = forecast.summary
         lbLowTemp.text = forecast.lowTempFormatted
         lbHighTemp.text = forecast.highTempFormatted
     }
