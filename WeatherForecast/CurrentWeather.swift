@@ -14,6 +14,7 @@ class CurrentWeather {
     var _date: String!
     var _weatherType : String!
     var _temp : Double!
+    var _summary : String!
     
     var dateConverted : String {
         let dateFormatter = DateFormatter()

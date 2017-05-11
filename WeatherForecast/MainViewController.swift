@@ -28,6 +28,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -49,69 +50,60 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             currentLocation = locationManager.location
             lat = currentLocation.coordinate.latitude
             long = currentLocation.coordinate.longitude
-            downloadWeatherData()
-            downloadForecastData()
+            downloadDataFromApiProvider()
         } else {
             locationManager.requestWhenInUseAuthorization()
             authorizeAndGetLocation()
         }
     }
     
-    func downloadForecastData() {
-        let apiUrl = "http://samples.openweathermap.org/data/2.5/forecast/daily?lat=\(lat!)&lon=\(long!)&cnt=10&appid=b1b15e88fa797225412429c1c50c122a1"
+    func downloadDataFromApiProvider() {
+        let apiUrl = "https://api.darksky.net/forecast/640ff36e1eeb8e3bdd8b302ca353089e/\(lat!),\(long!)"
         let forecastUrl = URL(string: apiUrl)!
         print(forecastUrl)
         Alamofire.request(forecastUrl).responseJSON { respond in
             let result = respond.result
             if let myDict = result.value as? Dictionary<String,AnyObject> {
-                if let forecastArray = myDict["list"] as? [Dictionary<String,AnyObject>] {
-                    for i in 0...9 {
-                        let forecast = Forecast()
-                        if let day = forecastArray[i]["temp"] as? Dictionary<String,AnyObject> {
-                            if let min = day["min"] as? Double {
-                                forecast.lowTemp = round(min - 273.15)
-                            }
-                            if let max = day["max"] as? Double {
-                                forecast.highTemp = round(max - 273.15)
-                            }
-                        }
-                        if let dt = forecastArray[i]["dt"] as? Double {
-                            let unitConvertedDate = Date(timeIntervalSince1970: dt)
-                            forecast.date = unitConvertedDate.dayOfWeek()
-                        }
-                        if let weather = forecastArray[i]["weather"] as? [Dictionary<String,AnyObject>] {
-                            if let weathertype = weather[0]["main"] as? String {
-                                forecast.weatherType = weathertype
-                            }
-                        }
-                        self.forecasts.append(forecast)
-                        print(self.forecasts[i].toString())
-                        
+                if let timezone = myDict["timezone"] as? String {
+                    self.currentWeather._cityName = timezone
+                }
+                if let currently = myDict["currently"] as? Dictionary<String,AnyObject> {
+                    if let time = currently["time"] as? Double {
+                        let unitConvertedDate = Date(timeIntervalSince1970: time)
+                        self.currentWeather._date = unitConvertedDate.dayOfWeek()
+                    }
+                    if let icon = currently["icon"] as? String {
+                        self.currentWeather._weatherType = icon
+                    }
+                    if let summary = currently["summary"] as? String {
+                        self.currentWeather._summary = summary
+                    }
+                    if let temp = currently["temperature"] as? Double {
+                        self.currentWeather._temp = temp
                     }
                 }
-            }
-            self.tbWeatherNextTenDay.reloadData()
-        }
-    }
-    
-    func downloadWeatherData() {
-        let apiUrl = "http://samples.openweathermap.org/data/2.5/weather?lat=\(lat!)&lon=\(long!)&appid=4efa6d7498432f279f0f6b43d8bcd8c7"
-        let currentWeatherUrl = URL(string: apiUrl)!
-        print(currentWeatherUrl)
-        Alamofire.request(currentWeatherUrl).responseJSON { respone in
-            let result = respone.result
-            if let myDict = result.value as? Dictionary<String,AnyObject> {
-                if let cityname = myDict["name"] as? String {
-                    self.currentWeather._cityName = cityname.capitalized
-                }
-                if let weathertype = myDict["weather"] as? [Dictionary<String,AnyObject>] {
-                    if let type = weathertype[0]["main"] as? String {
-                        self.currentWeather._weatherType = type
-                    }
-                }
-                if let main = myDict["main"] as? Dictionary<String,AnyObject> {
-                    if let temp = main["temp"] as? Double {
-                        self.currentWeather._temp = round(temp - 273.15)
+                if let daily = myDict["daily"] as? Dictionary<String,AnyObject> {
+                    if let data = daily["data"] as? [Dictionary<String,AnyObject>] {
+                        for i in 1...7 {
+                            var forecast = Forecast()
+                            if let time = data[i]["time"] as? Double {
+                                let unitConvertedDate = Date(timeIntervalSince1970: time)
+                                forecast.date = unitConvertedDate.dayOfWeek()
+                            }
+                            if let icon = data[i]["icon"] as? String {
+                                forecast.weatherType = icon
+                            }
+                            if let summary = data[i]["summary"] as? String {
+                                forecast.summary = summary
+                            }
+                            if let highTemp = data[i]["temperatureMax"] as? Double {
+                                forecast.highTemp = highTemp
+                            }
+                            if let lowTemp = data[i]["temperatureMin"] as? Double {
+                                forecast.lowTemp = lowTemp
+                            }
+                            self.forecasts.append(forecast)
+                        }
                     }
                 }
             }
@@ -120,6 +112,9 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             self.lbTemperature.text = "\(self.currentWeather.tempFormated)"
             self.lbDate.text = self.currentWeather._date
             self.imgWeather.image = UIImage(named: self.currentWeather._weatherType)
+            self.lbCurrentWeather.text = self.currentWeather._summary
+            
+            self.tbWeatherNextTenDay.reloadData()
         }
     }
     
