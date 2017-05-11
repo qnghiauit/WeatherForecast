@@ -41,5 +41,7 @@
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>We need your location\nPlease give it to me :3</string>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
 </dict>
 </plist>
