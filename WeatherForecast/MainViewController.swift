@@ -29,6 +29,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        UIApplication.shared.statusBarStyle = .lightContent
+        
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -65,7 +67,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             let result = respond.result
             if let myDict = result.value as? Dictionary<String,AnyObject> {
                 if let timezone = myDict["timezone"] as? String {
-                    self.currentWeather._cityName = timezone
+                    self.currentWeather._cityName = timezone.replacingOccurrences(of: "/", with: ", ").replacingOccurrences(of: "_", with: " ")
                 }
                 if let currently = myDict["currently"] as? Dictionary<String,AnyObject> {
                     if let time = currently["time"] as? Double {
@@ -79,13 +81,13 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
                         self.currentWeather._summary = summary
                     }
                     if let temp = currently["temperature"] as? Double {
-                        self.currentWeather._temp = temp
+                        self.currentWeather._temp = self.convertFahrenheitToCelsius(temp: temp)
                     }
                 }
                 if let daily = myDict["daily"] as? Dictionary<String,AnyObject> {
                     if let data = daily["data"] as? [Dictionary<String,AnyObject>] {
                         for i in 1...7 {
-                            var forecast = Forecast()
+                            let forecast = Forecast()
                             if let time = data[i]["time"] as? Double {
                                 let unitConvertedDate = Date(timeIntervalSince1970: time)
                                 forecast.date = unitConvertedDate.dayOfWeek()
@@ -97,10 +99,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
                                 forecast.summary = summary
                             }
                             if let highTemp = data[i]["temperatureMax"] as? Double {
-                                forecast.highTemp = highTemp
+                                forecast.highTemp = self.convertFahrenheitToCelsius(temp: highTemp)
                             }
                             if let lowTemp = data[i]["temperatureMin"] as? Double {
-                                forecast.lowTemp = lowTemp
+                                forecast.lowTemp = self.convertFahrenheitToCelsius(temp: lowTemp)
                             }
                             self.forecasts.append(forecast)
                         }
@@ -133,6 +135,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             return cell
         }
         return tbWeatherNextTenDay.dequeueReusableCell(withIdentifier: "WeatherCell", for: indexPath)
+    }
+    
+    func convertFahrenheitToCelsius(temp : Double) -> Double {
+        return (temp - 32) * 5 / 9
     }
 }
 

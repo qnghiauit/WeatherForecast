@@ -28,8 +28,4 @@ class Forecast {
         }
         return "\(Int(lowTemp))°C"
     }
-    
-    func toString() -> String {
-        return "\(date!) \(weatherType!) \(highTempFormatted) \(lowTempFormatted)"
-    }
 }

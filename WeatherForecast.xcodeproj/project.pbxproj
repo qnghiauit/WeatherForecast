@@ -63,6 +63,31 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		DF6DFD011EC4B4F100AA9F3E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				DFADD02F1EBF5BD400F5E3EE /* MainViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		DF6DFD021EC4B4FB00AA9F3E /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				DF359CF31EC2117500D46CFE /* ForecastTableViewCell.swift */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
+		DF6DFD031EC4B50200AA9F3E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DF359CF11EC1F55C00D46CFE /* Forecast.swift */,
+				DFADD03F1EBF839100F5E3EE /* CurrentWeather.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		DFADD0211EBF5BD400F5E3EE = {
 			isa = PBXGroup;
 			children = (
@@ -84,15 +109,14 @@
 		DFADD02C1EBF5BD400F5E3EE /* WeatherForecast */ = {
 			isa = PBXGroup;
 			children = (
-				DFADD02D1EBF5BD400F5E3EE /* AppDelegate.swift */,
-				DFADD02F1EBF5BD400F5E3EE /* MainViewController.swift */,
-				DFADD03F1EBF839100F5E3EE /* CurrentWeather.swift */,
-				DF359CF11EC1F55C00D46CFE /* Forecast.swift */,
-				DF359CF31EC2117500D46CFE /* ForecastTableViewCell.swift */,
+				DF6DFD031EC4B50200AA9F3E /* Model */,
+				DF6DFD021EC4B4FB00AA9F3E /* Cell */,
+				DF6DFD011EC4B4F100AA9F3E /* Controller */,
 				DFADD0311EBF5BD400F5E3EE /* Main.storyboard */,
-				DFADD0341EBF5BD400F5E3EE /* Assets.xcassets */,
 				DFADD0361EBF5BD400F5E3EE /* LaunchScreen.storyboard */,
+				DFADD0341EBF5BD400F5E3EE /* Assets.xcassets */,
 				DFADD0391EBF5BD400F5E3EE /* Info.plist */,
+				DFADD02D1EBF5BD400F5E3EE /* AppDelegate.swift */,
 			);
 			path = WeatherForecast;
 			sourceTree = "<group>";
